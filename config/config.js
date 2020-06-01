@@ -8,7 +8,7 @@ const config = {
 		USERNAME: 'root', //mysql用户名
 		PASSWORD: 'WUji1123581321', //mysql密码
 		PORT: '3306', //mysql端口号
-		HOST: '192.168.148.131' //服务器ip
+		HOST: '150.109.118.154' //服务器ip
 	}
 };
 
