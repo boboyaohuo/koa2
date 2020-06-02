@@ -1,5 +1,6 @@
 const Koa = require('koa')
 const app = new Koa()
+const cors = require('koa2-cors')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
@@ -16,6 +17,7 @@ app.use(bodyparser({
 }))
 app.use(json())
 app.use(logger())
+app.use(cors())
 
 // logger
 app.use(async (ctx, next) => {
