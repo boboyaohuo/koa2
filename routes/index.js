@@ -10,4 +10,14 @@ router.get('/getIndex', async (ctx, next) => {
 	};
 });
 
+router.post('/addIndex', async (ctx, next) => {
+	let res = await service.addIndex(ctx.request.body);
+	ctx.body = {
+		data: res,
+		status: 0,
+		message: 'ok'
+	};
+});
+
+
 module.exports = router;
