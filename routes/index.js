@@ -2,7 +2,7 @@ const router = require('koa-router')();
 const service = require('../lib/mysqlConfig');
 
 router.get('/getIndex', async (ctx, next) => {
-	let res = await service.getIndex();
+	let res = await service.getIndex(ctx.request.query);
 	ctx.body = {
 		data: res,
 		status: 0,
@@ -18,6 +18,5 @@ router.post('/addIndex', async (ctx, next) => {
 		message: 'ok'
 	};
 });
-
 
 module.exports = router;
