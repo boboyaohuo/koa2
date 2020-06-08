@@ -4,7 +4,7 @@ const mysql = require('../lib/mysqlConfig');
  * 首页数据
  */
 exports.getIndex = async (ctx) => {
-	let { id } = ctx.request.query;
+	let { id } = ctx.query;
 	if (!!id) {
 		let res = await mysql.getIndex(id);
 		ctx.body = {
