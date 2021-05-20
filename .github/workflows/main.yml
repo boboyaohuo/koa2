@@ -54,5 +54,5 @@ jobs:
           wget https://github.com/boboyaohuo/koa2/releases/latest/download/release.tgz -O release.tgz
           tar zxvf release.tgz
           rm -rf release.tgz
-          npm install
+          cnpm install
           pm2 restart boboyaohuo

@@ -1,11 +1,11 @@
 {
-  "name": "koa2",
+  "name": "wujianbo.com_koa2",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node bin/www",
     "dev": "./node_modules/.bin/nodemon bin/www",
-    "prd": "pm2 start bin/www --name boboyaohuo",
+    "prd": "pm2 start bin/www --name boboyaohuo -i 4",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
