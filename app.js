@@ -17,7 +17,11 @@ app.use(bodyparser({
 }))
 app.use(json())
 app.use(logger())
-app.use(cors())
+app.use(cors({
+  origin: function(ctx) {
+    return ctx.header.origin
+  }
+}))
 
 // logger
 app.use(async (ctx, next) => {
