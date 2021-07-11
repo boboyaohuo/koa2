@@ -5,4 +5,6 @@ router.get('/getIndex', controller.getIndex);
 
 router.post('/addIndex', controller.addIndex);
 
+router.post('/getLatestOrder', controller.getLatestOrder);
+
 module.exports = router;

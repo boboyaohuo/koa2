@@ -41,3 +41,32 @@ exports.addIndex = async (ctx) => {
 		};
 	}
 };
+
+/**
+ * 349获取信息
+ */
+exports.getLatestOrder = async (ctx) => {
+	ctx.request.headers['X-Requested-With'] = 'XMLHttpRequest';
+	ctx.request.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+	var opt = {
+		host:'47.243.140.214',
+		port: 80,
+		method:'POST',
+		path: ctx.request.url,
+		headers:ctx.request.headers
+	}
+	const res = await Index.getLatestOrder(opt);
+	if (res.state == 'ok') {
+		ctx.body = {
+			data: res,
+			status: 0,
+			message: 'ok'
+		}
+	} else {
+		ctx.body = {
+			data: res.state,
+			status: -1,
+			message: 'ok'
+		}
+	}
+}

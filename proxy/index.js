@@ -1,5 +1,6 @@
 const Index = require('../models/index.js');
 const { Op } = require("sequelize");
+const http = require('http');
 
 /**
  * 根据Id 反查询列表
@@ -23,4 +24,22 @@ exports.getIndex = async (id) => {
  */
 exports.addIndex = async (value) => {
   return await Index.create(value)
+}
+
+/**
+ * 查询349
+ */
+exports.getLatestOrder = (options) => {
+	return new Promise(async (resolve, reject) => {
+		const req = await http.request(options, function(res) {
+			res.on('data', function (chunk) {
+				resolve(JSON.parse(chunk.toString()))
+			}); 
+		})
+		req.on('error', function(e) {
+			console.log('-----error-------', e);
+			reject(e)
+		})
+		req.end();
+	})
 }
