@@ -48,6 +48,7 @@ exports.addIndex = async (ctx) => {
 exports.getLatestOrder = async (ctx) => {
 	ctx.request.headers['X-Requested-With'] = 'XMLHttpRequest';
 	ctx.request.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+	ctx.request.headers.cookie = `td_cookies=${ctx.cookies.get('td_cookis')}&sessionId=${ctx.cookies.get('sessionId')}`
 	var opt = {
 		host:'47.243.140.214',
 		port: 80,
