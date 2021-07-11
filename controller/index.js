@@ -64,9 +64,9 @@ exports.getLatestOrder = async (ctx) => {
 		}
 	} else {
 		ctx.body = {
-			data: res.state,
+			data: res,
 			status: -1,
-			message: 'ok'
+			message: res.state
 		}
 	}
 }
