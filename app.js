@@ -20,7 +20,8 @@ app.use(logger())
 app.use(cors({
   origin: function(ctx) {
     return ctx.header.origin
-  }
+  },
+  credentials: true, //是否允许发送Cookie
 }))
 
 // logger
