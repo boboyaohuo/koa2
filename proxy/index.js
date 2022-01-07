@@ -53,7 +53,7 @@ exports.getTinify = (options, fileName) => {
     options.url,
     {
       source: {
-        url: `https://www.wujianbo.com/upload${fileName}`
+        url: `https://www.wujianbo.com/upload/${fileName}`
       }
     },
     {
