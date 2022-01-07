@@ -57,7 +57,8 @@ exports.getTinify = (options, fileName) => {
       }
     },
     {
-      headers: options.headers
+      headers: options.headers,
+      timeout: 120000
     }
   );
 };
