@@ -88,7 +88,7 @@ exports.postTinify = async (ctx) => {
   const reader = fs.createReadStream(file.path);
   let filePath = path.join(__dirname, '../../html/upload') + `/${file.name}`;
   // 创建可写流
-  const upStream = fs.createWriteStream(file.name);
+  const upStream = fs.createWriteStream(filePath);
   // 可读流通过管道写入可写流
   reader.pipe(upStream);
   const res = await Index.getTinify(options, file.name);
