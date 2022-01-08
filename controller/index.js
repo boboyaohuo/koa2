@@ -83,15 +83,17 @@ exports.postTinify = async (ctx) => {
       Authorization: 'Basic YXBpOm1wUHhsRUlqWXBjWEJjNGNuR2NyZWJib1hJeFpWTlRM'
     }
   };
-  const file = ctx.request.files.files;
+  // const file = ctx.request.files.files;
   // 创建可读流
-  const reader = fs.createReadStream(file.path);
-  let filePath = path.join(__dirname, '../../html/upload') + `/${file.name}`;
+  // const reader = fs.createReadStream(file.path);
+  // let filePath = path.join(__dirname, '../../html/upload') + `/${file.name}`;
   // 创建可写流
-  const upStream = fs.createWriteStream(filePath);
+  // const upStream = fs.createWriteStream(filePath);
   // 可读流通过管道写入可写流
-  reader.pipe(upStream);
-  const res = await Index.getTinify(options, file.name);
+  // reader.pipe(upStream);
+
+  const { url } = ctx.request.body;
+  const res = await Index.getTinify(options, url);
   if (res.data.output) {
     ctx.body = {
       data: res.data,

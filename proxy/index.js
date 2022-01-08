@@ -48,12 +48,12 @@ exports.getLatestOrder = (options) => {
 /**
  * tinify 压缩
  */
-exports.getTinify = (options, fileName) => {
+exports.getTinify = (options, url) => {
   return axios.post(
     options.url,
     {
       source: {
-        url: `https://www.wujianbo.com/upload/${fileName}`
+        url
       }
     },
     {
