@@ -6,6 +6,10 @@ const Index = sequelize.define('t_index', {
     type: Sequelize.STRING(500),
     allowNull: false,
     comment: '文本'
+  },
+  status: {
+    type: Sequelize.BOOLEAN(true),
+    comment: '状态'
   }
 });
 
