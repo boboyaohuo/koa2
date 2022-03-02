@@ -24,6 +24,18 @@ exports.getIndex = async (ctx) => {
 };
 
 /**
+ * 首页数据数组
+ */
+ exports.getIndexList = async (ctx) => {
+  let res = await Index.getIndexList();
+  ctx.body = {
+    data: res,
+    status: 0,
+    message: 'ok'
+  };
+};
+
+/**
  * 首页添加数据
  */
 exports.addIndex = async (ctx) => {

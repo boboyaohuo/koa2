@@ -3,6 +3,8 @@ const controller = require('../controller/index');
 
 router.get('/getIndex', controller.getIndex);
 
+router.get('/getIndexList', controller.getIndexList);
+
 router.post('/addIndex', controller.addIndex);
 
 router.post('/getLatestOrder', controller.getLatestOrder);

@@ -6,7 +6,7 @@ const axios = require('axios');
 /**
  * 根据Id 反查询列表
  * @param {Number} 文本编号
- * @returns {Array} 文本数组
+ * @returns {string} 文本
  */
 exports.getIndex = async (id) => {
   return await Index.findAll({
@@ -16,6 +16,14 @@ exports.getIndex = async (id) => {
       }
     }
   });
+};
+
+/**
+ * 根据Id 反查询列表
+ * @returns {Array} 文本数组
+ */
+ exports.getIndexList = async () => {
+  return await Index.findAll();
 };
 
 /**
