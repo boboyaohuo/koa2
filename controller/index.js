@@ -27,7 +27,7 @@ exports.getIndex = async (ctx) => {
  * 首页数据数组
  */
  exports.getIndexList = async (ctx) => {
-  let res = await Index.getIndexList();
+  const res = await Index.getIndexList();
   ctx.body = {
     data: res,
     status: 0,
@@ -52,6 +52,46 @@ exports.addIndex = async (ctx) => {
       data: '',
       status: -1,
       message: '请输入文字后提交'
+    };
+  }
+};
+
+/**
+ * 首页更新数据
+ */
+ exports.updateIndex = async (ctx) => {
+  let { id, text, status } = ctx.request.body;
+  if (!!id) {
+    const res = await Index.updateIndex({ id, text, status });
+    ctx.body = {
+      data: res,
+      status: 0,
+      message: 'ok'
+    };
+  } else {
+    ctx.body = {
+      data: '',
+      status: -1,
+      message: '请输入id后提交'
+    };
+  }
+};
+
+/** 首页删除数据 */
+exports.deleteIndex = async (ctx) => {
+  let { id } = ctx.query;
+  if (!!id) {
+    const res = await Index.deleteIndex(id);
+    ctx.body = {
+      data: res,
+      status: 0,
+      message: 'ok'
+    };
+  } else {
+    ctx.body = {
+      data: '',
+      status: -1,
+      message: '请输入id后提交'
     };
   }
 };

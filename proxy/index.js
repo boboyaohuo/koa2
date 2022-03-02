@@ -13,6 +13,9 @@ exports.getIndex = async (id) => {
     where: {
       id: {
         [Op.ne]: id
+      },
+      status: {
+        [Op.eq]: 1
       }
     }
   });
@@ -22,8 +25,14 @@ exports.getIndex = async (id) => {
  * 根据Id 反查询列表
  * @returns {Array} 文本数组
  */
- exports.getIndexList = async () => {
-  return await Index.findAll();
+exports.getIndexList = async () => {
+  return await Index.findAll({
+    where: {
+      status: {
+        [Op.eq]: 1
+      }
+    }
+  });
 };
 
 /**
@@ -33,6 +42,30 @@ exports.getIndex = async (id) => {
  */
 exports.addIndex = async (value) => {
   return await Index.create(value);
+};
+
+/**
+ * 更新文本
+ * @param {String} id
+ * @param {String} text
+ * @param {String} status
+ * @returns {}
+ */
+exports.updateIndex = async ({ id, text, status }) => {
+  return await Index.update({ text, status }, { where: { id } });
+};
+
+/**
+ * 删除文本
+ * @param {Number} Id
+ * @returns {}
+ */
+exports.deleteIndex = async (id) => {
+  return await Index.destroy({
+    where: {
+      id
+    }
+  });
 };
 
 /**
