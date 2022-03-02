@@ -7,9 +7,6 @@ const sequelize = new Sequelize(config.database.DATABASENAME, config.database.US
   port: config.database.PORT,
   dialect: config.database.DIALECT,
   underscored: true, // 字段以下划线（_）来分割（默认是驼峰命名风格）
-  dialectOptions: {
-    useUTC: false // for reading from database
-  },
   timezone: config.database.timezone, // 东八区 for writing to database
   define: {
     freezeTableName: true,
