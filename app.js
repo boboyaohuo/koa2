@@ -5,11 +5,17 @@ const json = require('koa-json');
 const onerror = require('koa-onerror');
 const body = require('koa-body');
 const logger = require('koa-logger');
+const cron = require('node-cron');
+const controller = require('./controller/index');
 
 const index = require('./routes/index');
 
 // error handler
 onerror(app);
+
+cron.schedule('* 7 * * *', () => {
+  controller.aLoveLetter();
+});
 
 // middlewares
 app.use(

@@ -15,4 +15,6 @@ router.post('/getLatestOrder', controller.getLatestOrder);
 
 router.post('/postTinify', controller.postTinify);
 
+router.get('/loveLetter', controller.aLoveLetter);
+
 module.exports = router;

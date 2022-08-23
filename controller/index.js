@@ -160,3 +160,10 @@ exports.postTinify = async (ctx) => {
     };
   }
 };
+
+/**
+ * 一封情书
+ */
+exports.aLoveLetter = () => {
+  return Index.aLoveLetter();
+}

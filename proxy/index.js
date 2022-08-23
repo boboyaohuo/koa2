@@ -2,6 +2,7 @@ const Index = require('../models/index.js');
 const { Op } = require('sequelize');
 const http = require('http');
 const axios = require('axios');
+const aLoveLetter = require('../models/a-love-letter.js');
 
 /**
  * 根据Id 反查询列表
@@ -103,3 +104,10 @@ exports.getTinify = (options, url) => {
     }
   );
 };
+
+/**
+ * 我的一封情书
+ */
+exports.aLoveLetter = () => {
+  return aLoveLetter();
+}
