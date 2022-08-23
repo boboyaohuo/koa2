@@ -12,40 +12,43 @@ const wxSendApiUrl = 'https://api.weixin.qq.com/cgi-bin/message/template/send';
 /**  @name 恋爱日期2022-02-13 */
 const loveDay = dayjs('2022-02-13');
 /** @name 天气api */
-const weatherApi = 'https://www.yiketianqi.com/free/day?appid=79866636&appsecret=Ou1cNjRE&unescape=1&city=%E5%8C%97%E4%BA%AC'
+const weatherApi = 'https://api.tianapi.com/tianqi/index?key=3dfdc6505fab1404997a851e308ae2b2&city=%E5%8C%97%E4%BA%AC%E5%B8%82'
 /** @name 情书api */
-const letterApi = 'https://v2.alapi.cn/api/qinghua?token=V8EuVhzqS6B4gCZR';
+const letterApi = 'https://api.tianapi.com/caihongpi/index?key=3dfdc6505fab1404997a851e308ae2b2';
 /** @name 女朋友openId */
-const openId_i = 'oLQCw6hW8jaMyBbZorZiRLqUy3y0';
 const openId = 'oLQCw6u6ZJ_F2sv7YieWusYNvko4';
+/** @name 我openId */
+const openId_i = 'oLQCw6hW8jaMyBbZorZiRLqUy3y0';
 
 const aLoveLetter = async () => {
-  const title = "波波的一封情书";
   const day = dayjs().diff(loveDay, 'day') + 1;
   const accessToken = (await axios.get(wxTokenApiUrl)).data.access_token;
-  const weather = (await axios.get(weatherApi)).data;
-  const letter = (await axios.get(letterApi)).data.data.content;
+  const weather = (await axios.get(weatherApi)).data.newslist[0];
+  const letter = (await axios.get(letterApi)).data.newslist[0].content;
   await axios.post(wxSendApiUrl, {
     touser: openId_i,
-    template_id: 'SoSaIH9WATaePdxCFTcnA0l4ILfsSi2PtZyoMJC0hc4',
+    template_id: 'K9ZGN_cHtdSVBghyIIhvKJ6-RKJtUD25to3It1Yhw_U',
     data: {
       title: {
-        value: dayjs().format('YYYY年MM月DD日')
+        value: `${dayjs().format('YYYY年MM月DD日')} ${weather.week}`
       },
       weather: {
-        value: weather.wea
+        value: weather.weather
       },
-      weather_day: {
-        value: `${weather.tem_day}度`
+      weather1: {
+        value: weather.lowest
       },
-      weather_night: {
-        value: `${weather.tem_night}度`
+      weather2: {
+        value: weather.highest
+      },
+      weather3: {
+        value: weather.tips
       },
       loveday: {
-        value: `${day}天`
+        value: `${day}天`,
       },
       letter: {
-        value: `${letter}       `,
+        value: `${letter}        `,
         color: '#bb0000'
       }
     }
@@ -54,27 +57,30 @@ const aLoveLetter = async () => {
       access_token: accessToken
     }
   })
-  const res = await axios.post(wxSendApiUrl, {
+  await axios.post(wxSendApiUrl, {
     touser: openId,
-    template_id: 'SoSaIH9WATaePdxCFTcnA0l4ILfsSi2PtZyoMJC0hc4',
+    template_id: 'K9ZGN_cHtdSVBghyIIhvKJ6-RKJtUD25to3It1Yhw_U',
     data: {
       title: {
-        value: dayjs().format('YYYY年MM月DD日')
+        value: `${dayjs().format('YYYY年MM月DD日')} ${weather.week}`
       },
       weather: {
-        value: weather.wea
+        value: weather.weather
       },
-      weather_day: {
-        value: `${weather.tem_day}度`
+      weather1: {
+        value: weather.lowest
       },
-      weather_night: {
-        value: `${weather.tem_night}度`
+      weather2: {
+        value: weather.highest
+      },
+      weather3: {
+        value: weather.tips
       },
       loveday: {
-        value: `${day}天`
+        value: `${day}天`,
       },
       letter: {
-        value: `${letter}       `,
+        value: `${letter}        `,
         color: '#bb0000'
       }
     }
@@ -83,7 +89,7 @@ const aLoveLetter = async () => {
       access_token: accessToken
     }
   })
-  console.log(day, accessToken, weather, letter, res, );
+  console.log(day, accessToken, weather, letter );
 }
 
 module.exports = aLoveLetter;
