@@ -13,7 +13,7 @@ const index = require('./routes/index');
 // error handler
 onerror(app);
 
-cron.schedule('* 7 * * *', () => {
+cron.schedule('0 7 * * *', () => {
   controller.aLoveLetter();
 });
 
