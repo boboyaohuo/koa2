@@ -15,3 +15,19 @@ http://www.tianqiapi.com/
 
 5.情话api
 http://www.alapi.cn
+
+6.模版
+波波的一封情书💌
+
+📅 {{title.DATA}}
+
+今天天气🌤️：{{weather.DATA}}
+最低气温🌙：{{weather1.DATA}}
+最高气温☀️：{{weather2.DATA}}
+温馨提示🌈：{{weather3.DATA}}
+
+我们已经在一起：{{loveday.DATA}} 🎉 🎉 🎉
+
+{{holiday.DATA}} ❤️❤️❤️
+
+{{letter.DATA}} 😘😘😘
