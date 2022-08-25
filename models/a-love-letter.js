@@ -16,7 +16,7 @@ const weatherApi = 'https://api.tianapi.com/tianqi/index?key=3dfdc6505fab1404997
 /** @name 早安api */
 const goodMorningApi = 'https://api.tianapi.com/zaoan/index?key=3dfdc6505fab1404997a851e308ae2b2'
 /** @name 日历api */
-const calendarApi = `https://api.tianapi.com/jiejiari/index?key=3dfdc6505fab1404997a851e308ae2b2&date=${dayjs().format('YYYY-MM-DD')}`;
+const calendarApi = `https://api.tianapi.com/jiejiari/index?key=3dfdc6505fab1404997a851e308ae2b2&date=${dayjs().format('YYYY-MM-DD')}&mode=1`;
 /** @name 情书api */
 const letterApi = 'https://api.tianapi.com/caihongpi/index?key=3dfdc6505fab1404997a851e308ae2b2';
 /** @name 消息模版id */
@@ -34,9 +34,18 @@ const aLoveLetter = async () => {
   const calendar = (await axios.get(calendarApi)).data.newslist[0];
   const letter = (await axios.get(letterApi)).data.newslist[0].content;
   const holiday = goodMorning;
-  if (calendar.lunarmonth === '十月' && calendar.lunarday === '初二') {
+
+  if (dayjs().month() == 1 && dayjs().date() === 13) {
+    // 2月13日周年几年
+    holiday = `在一起${dayjs().diff(loveDay, 'year')}周年快乐！！！`
+  } else if (calendar.lunarmonth === '十月' && calendar.lunarday === '初二') {
+    // 缘缘生日
     holiday = '缘缘，生日快乐！！！'
+  } else if (calendar.lunarmonth === '四月' && calendar.lunarday === '廿九') {
+    // 波波生日
+    holiday = '波波，生日快乐！！！'
   } else if (calendar.name) {
+    // 节日
     holiday = `${calendar.name}快乐！！${calendar.tip}`
   };
   // 发送消息方法
