@@ -59,7 +59,7 @@ exports.addIndex = async (ctx) => {
 /**
  * 首页更新数据
  */
- exports.updateIndex = async (ctx) => {
+exports.updateIndex = async (ctx) => {
   let { id, text, status } = ctx.request.body;
   if (!!id) {
     const res = await Index.updateIndex({ id, text, status });

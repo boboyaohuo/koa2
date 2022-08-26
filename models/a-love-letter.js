@@ -1,5 +1,6 @@
 const axios = require('axios');
 const dayjs = require('dayjs');
+const Index = require('../proxy/index');
 
 /** @name 公众号appId */
 const appId = 'wx3138af1a3a1f790e';
@@ -32,7 +33,8 @@ const aLoveLetter = async () => {
   const weather = (await axios.get(weatherApi)).data.newslist[0];
   const goodMorning = (await axios.get(goodMorningApi)).data.newslist[0].content;
   const calendar = (await axios.get(calendarApi)).data.newslist[0];
-  const letter = (await axios.get(letterApi)).data.newslist[0].content;
+  let letter = (await axios.get(letterApi)).data.newslist[0].content;
+  letter = letter.substr(-1) === "。" ? letter : `${letter}。`;
   const holiday = goodMorning;
 
   if (dayjs().month() == 1 && dayjs().date() === 13) {
@@ -88,6 +90,7 @@ const aLoveLetter = async () => {
     })
     return res.data.errmsg;
   }
+  await Index.addIndex({text: letter});
   const result = await Promise.all([openId_i, openId].map(item => sendMsg(item)));
   console.log(dayjs().format('YYYY年MM月DD日'), result);
 }
