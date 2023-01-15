@@ -10,10 +10,10 @@ const appSecret = 'f2ae5e07202ccb4c96c720cd28e8840f';
 const wxTokenApiUrl = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${appId}&secret=${appSecret}`;
 /** @name 发送消息api */
 const wxSendApiUrl = 'https://api.weixin.qq.com/cgi-bin/message/template/send';
-/**  @name 恋爱日期2022-02-13 */
-const loveDay = dayjs('2022-02-13');
+/**  @name 恋爱日期2022-02-14 */
+const loveDay = dayjs('2022-02-14');
 /** @name 天气api */
-const weatherApi = 'https://api.tianapi.com/tianqi/index?key=3dfdc6505fab1404997a851e308ae2b2&city=%E5%8C%97%E4%BA%AC%E5%B8%82'
+const weatherApi = 'https://api.tianapi.com/tianqi/index?key=3dfdc6505fab1404997a851e308ae2b2&city=%E5%9B%B4%E5%9C%BA';
 /** @name 早安api */
 const goodMorningApi = 'https://api.tianapi.com/zaoan/index?key=3dfdc6505fab1404997a851e308ae2b2'
 /** @name 日历api */
@@ -37,8 +37,8 @@ const aLoveLetter = async () => {
   letter = letter.substr(-1) === "。" ? letter : `${letter}。`;
   const holiday = goodMorning;
 
-  if (dayjs().month() == 1 && dayjs().date() === 13) {
-    // 2月13日周年几年
+  if (dayjs().month() == 1 && dayjs().date() === 14) {
+    // 2月14日周年几年
     holiday = `在一起${dayjs().diff(loveDay, 'year')}周年快乐！！！`
   } else if (calendar.lunarmonth === '十月' && calendar.lunarday === '初二') {
     // 缘缘生日
